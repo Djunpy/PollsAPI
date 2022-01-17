@@ -8,6 +8,7 @@ class Poll(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     publish = models.DateTimeField(default=timezone.now)
 
+
     class Meta:
         verbose_name = 'Вопрос'
         verbose_name_plural = 'Вопросы'
@@ -18,7 +19,7 @@ class Poll(models.Model):
 
 
 class Choice(models.Model):
-    poll = models.ForeignKey(Poll, on_delete=models.CASCADE)
+    poll = models.ForeignKey(Poll, related_name='choices', on_delete=models.CASCADE)
     choice_text = models.CharField(max_length=100)
 
     class Meta:
