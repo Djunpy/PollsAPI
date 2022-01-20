@@ -1,7 +1,7 @@
 from django.urls import path, include
 from rest_framework import routers
 from .views import (
-    PollViewSet, ChoiceListAPI, CreateVoteAPI)
+    PollViewSet, ChoiceListAPI, CreateVoteAPI, UserCreateAPI, LoginViewAPI)
 
 app_name = 'poll_api'
 
@@ -15,4 +15,7 @@ urlpatterns = [
     path('', include(router.urls)),
     path('choices/', ChoiceListAPI.as_view(), name='choices'),
     path('polls/<int:pk>/choices/<int:choice_pk>/vote/', CreateVoteAPI.as_view(), name='create_vote'),
+    path('users/', UserCreateAPI.as_view(), name='user_create'),
+    path('login/', LoginViewAPI.as_view(), name='login'),
+
 ]
